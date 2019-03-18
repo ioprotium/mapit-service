@@ -15,5 +15,5 @@ end
 class ApplicationController < ActionController::API
   include ExceptionHandler   
   
-  protect_from_forgery with: :null_session
+  # protect_from_forgery with: :null_session
 end
