@@ -5,4 +5,6 @@ Rails.application.routes.draw do
       get 'geocoder/:address', to: 'markers#geocoder'
     end
   end  
+
+  get '', to: redirect('/index.html')
 end
