@@ -1,7 +1,7 @@
 module Api
   module V1
 
-    class MarkersController < ApplicationController
+    class MarkersController < ApplicationController     
       before_action :get_marker, only: [:show, :update, :destroy]
 
       # /markers
@@ -12,21 +12,14 @@ module Api
 
       # /markers
       def create
-        @marker = Marker.new(check)
-        if @marker.save
-         render json: @marker, status: :created
-        else
-         render json: @marker.errors, status: :unprocessable_entity
-        end
+        @marker = Marker.create!(check)
+        render json: @marker, status: :created
       end
 
       # /markers/:id
       def update
-        if @marker.update(check)
-         render json: @marker
-        else
-          render json: @marker.errors, status: :unprocessable_entity
-        end
+        @marker.update(check)
+        render json: @marker
       end
 
       # /markers/:id
@@ -37,6 +30,12 @@ module Api
       # /markers/:id
       def destroy
         @marker.destroy
+      end
+
+      # Geocoder
+      def geocoder
+        puts params[:address]
+        render json: {'foo' => 'bar'}.to_json
       end
 
       private 

@@ -90,4 +90,13 @@ RSpec.describe 'Markers API', type: :request do
       expect(response).to have_http_status(204)
     end
   end
+
+  describe 'GET /markers/geodecoder' do
+    before { get "#{api_url}/markers/geocoder?address=Berlin" }
+
+    it 'returns geoposition of Berlin' do
+      expect(response.body).not_to be_empty
+      expect(response).to have_http_status(200)
+    end
+  end
 end
