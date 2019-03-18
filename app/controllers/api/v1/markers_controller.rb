@@ -1,7 +1,19 @@
 module Api
   module V1
 
+    module GMapsGeocoder
+      require 'net/http'
+    
+      def get_geoposition(address)
+        url = URI.parse("https://maps.googleapis.com/maps/api/geocode/json?address=#{address}&key=#{ENV["GOOGLEK"]}")
+        Net::HTTP.get(url)
+      end
+      
+    end
+
     class MarkersController < ApplicationController     
+      include GMapsGeocoder
+
       before_action :get_marker, only: [:show, :update, :destroy]
 
       # /markers
@@ -34,8 +46,7 @@ module Api
 
       # Geocoder
       def geocoder
-        puts params[:address]
-        render json: {'foo' => 'bar'}.to_json
+        render json: get_geoposition(params[:address])
       end
 
       private 

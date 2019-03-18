@@ -13,7 +13,7 @@ module ExceptionHandler
 end
 
 class ApplicationController < ActionController::API
-  include ExceptionHandler
+  include ExceptionHandler   
   
   protect_from_forgery with: :null_session
 end
