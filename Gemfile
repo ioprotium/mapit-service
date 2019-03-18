@@ -7,7 +7,7 @@ ruby '2.6.1'
 gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
-# gem 'sqlite3', '~> 1.3.6' # fix RSpec errors
+gem 'sqlite3', '~> 1.3.6' # fix RSpec errors
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
@@ -40,3 +40,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rack-cors', require: 'rack/cors'
 gem 'rack-throttle'
+gem 'rails_12factor', group: :production
