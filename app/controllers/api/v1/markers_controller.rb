@@ -5,7 +5,7 @@ module Api
       require 'net/http'
     
       def get_geoposition(address)
-        url = URI.parse("https://maps.googleapis.com/maps/api/geocode/json?address=#{address}&key=#{ENV["GOOGLEK"]}")
+        url = URI.parse("https://maps.googleapis.com/maps/api/geocode/json?address=#{address}&key=#{ENV["GMAPS_KEY"]}")
         Net::HTTP.get(url)
       end
       
